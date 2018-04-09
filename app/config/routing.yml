@@ -1,0 +1,19 @@
+tayara_annonce:
+    resource: "@tayaraAnnonceBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tayara_user:
+    resource: "@tayaraUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

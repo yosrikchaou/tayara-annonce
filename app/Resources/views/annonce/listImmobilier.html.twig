@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function ()
+        {
+            $("#tab").pagination({
+                items: 2,
+                contents: 'contents',
+                previous: 'Precedent',
+                next: 'suivant',
+                position: 'bottom',
+            });
+        });
+    </script>
+    <h1></h1>  <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box" style="margin-left: 25em ;width: 100% ">
+                    <div class="widget-title">
+                        <span class="icon">
+                          
+                        </span>
+                    </div>
+                    <div class="widget-content">
+
+    
+   
+    <div id="wrapper">
+        <div class="contents"> 
+            {% for annonce in annonces %}
+            
+                   <div>   
+                <table> 
+                    <tbody> 
+                        <tr>
+                            <td><img src="{{ asset('uploads/images/' ~ annonce.image) }}" height="100px" width="150px"></td>
+                            <td><ul style=" list-style-type: none">  <h2><li>{{ annonce.titre }}</li></h2> <li>{{ annonce.prix }} DT</li> <li>{{ annonce.date|date('m/d/Y') }}</li> <li><a href="{{ path('listannonce_show', { 'id': annonce.id }) }}">plus info</a></ul></td>
+                        </tr>
+                               
+                        </tbody>
+                    </table>
+                </div>
+                        {% endfor %} 
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        {% endblock %}
+

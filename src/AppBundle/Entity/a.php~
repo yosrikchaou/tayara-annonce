@@ -1,0 +1,71 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * a
+ *
+ * @ORM\Table(name="a")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\aRepository")
+ */
+class a
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    /**
+     * @ORM\ManyToOne(targetEntity="tayara\AnnonceBundle\Entity\Annonce")
+     * @ORM\JoinColumn(nullable=true, onDelete = "CASCADE")
+     */
+    
+    private $user;
+    /**
+     * @ORM\ManyToOne(targetEntity="tayara\AnnonceBundle\Entity\Categorie")
+     * @ORM\JoinColumn(nullable=true, onDelete = "CASCADE")
+     */
+    
+    private $categorie;
+    
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \tayara\AnnonceBundle\Entity\Annonce $user
+     *
+     * @return a
+     */
+    public function setUser(\tayara\AnnonceBundle\Entity\Annonce $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \tayara\AnnonceBundle\Entity\Annonce
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

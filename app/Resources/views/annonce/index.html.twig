@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Annonces list</h1>
+    <table>
+        <tbody> {% for annonce in annonces %}
+
+            <tr>
+                
+                <td><img src="{{ asset('uploads/images/' ~ annonce.image) }}" height="100px" width="150px"></td>
+              
+                <td><ul style=" list-style-type: none">  <h2>
+                            <li>{{ annonce.titre }}</li>
+                        </h2> 
+                            <li>{{ annonce.prix }} DT</li>
+                            <li>{{ annonce.date|date('m/d/Y') }}</li>
+                            <li><a href="{{ path('annonce_show', { 'id': annonce.id }) }}">plus info</a>
+                {%if annonce.valide=="1"%} 
+                            <li style="color: #e9322d">
+                en cours de validation 
+                            </li>
+                {%else%}
+                    <li style="color:  green">
+                validé </li>
+                {%endif%}
+               
+                </ul>
+                </td>
+
+</tr>
+        
+{% endfor %}
+</tbody>
+</table>
+
+
+{% endblock %}
+

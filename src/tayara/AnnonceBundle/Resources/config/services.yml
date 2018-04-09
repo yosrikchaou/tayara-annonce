@@ -1,0 +1,4 @@
+services:
+#    tayara_annonce.example:
+#        class: tayara\AnnonceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

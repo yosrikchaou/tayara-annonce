@@ -1,0 +1,176 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <h1>Annonce creation</h1>
+    {{ form_start(form) }}
+    <div id="content">
+        <div id="content-header">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="widget-box">
+                            <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+                                <h5>Votre annonce</h5>
+                            </div>
+                            <div class="widget-content nopadding">
+                                <div class="form-horizontal">
+                                    <a href="#home" role="tab" data-toggle="tab"><button type="submit" class="btn btn-info" style="margin:1em 5em 1em 12em;width: 20% ">Précedent</button></a>
+                                    <a href="#profile" role="tab" data-toggle="tab"><button type="submit" class="btn btn-info" style="width: 20% ">Suivant</button></a>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade in active" id="home">
+                                            <div class="control-group">
+                                                {{ form_label(form.region, "region* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.region) }}
+                                                    {{ form_errors(form.region) }}
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                {{ form_label(form.ville, "ville* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.ville) }}
+                                                    {{ form_errors(form.ville) }}
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                {{ form_label(form.titre, "titre* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.titre) }}
+                                                    {{ form_errors(form.titre) }}
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                {{ form_label(form.description, "description* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.description) }}
+                                                    {{ form_errors(form.description) }}			
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                {{ form_label(form.prix, "prix* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.prix) }}
+                                                    {{ form_errors(form.prix) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile">
+                                            <div class="control-group">
+                                                {{ form_label(form.image, "image* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.image) }}
+                                                    {{ form_errors(form.image) }}
+                                                </div>
+                                            </div>
+                                            <div class="control-group">
+                                                {{ form_label(form.categorie, "categorie* ") }}
+                                                <div class="controls">
+                                                    {{ form_widget(form.categorie) }}
+                                                    {{ form_errors(form.categorie) }}
+                                                </div>
+                                            </div>
+
+                                            <div  id="vehicule">
+
+
+
+                                                <div class="control-group">
+                                                    {{ form_label(form.marque, "marque* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.marque) }}
+                                                        {{ form_errors(form.marque) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    {{ form_label(form.model, "model* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.model) }}
+                                                        {{ form_errors(form.model) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    {{ form_label(form.anne, "anne* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.anne) }}
+                                                        {{ form_errors(form.anne) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    {{ form_label(form.kelometrage, "kilometrage* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.kelometrage) }}
+                                                        {{ form_errors(form.kelometrage) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="immobilier">
+                                                <div class="control-group">
+                                                    {{ form_label(form.transaction, "type de transaction* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.transaction) }}
+                                                        {{ form_errors(form.transaction) }}
+                                                    </div>
+                                                </div>
+
+                                                <div class="control-group">
+                                                    {{ form_label(form.chambre, "chambre* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.chambre) }}
+                                                        {{ form_errors(form.chambre) }}
+                                                    </div>
+                                                </div>
+                                                <div class="control-group">
+                                                    {{ form_label(form.superficie, "superficie* ") }}
+                                                    <div class="controls">
+                                                        {{ form_widget(form.superficie) }}
+                                                        {{ form_errors(form.superficie) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <input type="submit" value="Create" style="margin-left: 20em" class="btn btn-success" />
+                                        </div>  
+                                    </div>
+                                </div>        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#vehicule").hide();
+            $("#immobilier").hide();
+            $("#categorie").change(function () {
+                var x = $("#categorie").val();
+                if (x == 1)
+                {
+                    $("#immobilier").hide();
+                    $("#vehicule").show();
+                } else if (x == 2)
+                {
+                    {
+                        $("#immobilier").show();
+                        $("#vehicule").hide();
+                    }
+
+                } else
+                {
+                    $("#vehicule").hide();
+                    $("#immobilier").hide();
+                }
+            });
+
+        });
+    </script>
+
+{% endblock %}
