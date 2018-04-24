@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/wamp64/www/Tayara/app/Resources/views/annonce/new.html.twig</file>
+            <file>file:/C:/wamp64/www/Tayara/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/wamp64/www/Tayara/app/config/parameters.yml</file>
+            <file>file:/C:/wamp64/www/Tayara/src/tayara/AnnonceBundle/Controller/AnnonceController.php</file>
+            <file>file:/C:/wamp64/www/Tayara/src/tayara/AnnonceBundle/Entity/Annonce.php</file>
+            <file>file:/C:/wamp64/www/Tayara/web/assets/js/main.js</file>
+            <file>file:/C:/wamp64/www/Tayara/src/tayara/AnnonceBundle/Form/AnnonceType.php</file>
+        </group>
     </open-files>
 </project-private>

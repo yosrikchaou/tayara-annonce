@@ -9,9 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/bootstrap-responsive.min.css')}}" />
-        <link rel="stylesheet" href="{{asset('assets/css/fullcalendar.css')}}" />
-        <link rel="stylesheet" href="{{asset('assets/css/maruti-style.css')}}" />
-        <link rel="stylesheet" href="{{asset('assets/css/maruti-media.css')}}" class="skin-color" />
+       
+       
+       
         <link rel="stylesheet" href="{{asset('assets/css/pagination.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/uniform.css')}}" />
         <link rel="stylesheet" href="{{asset('assets/css/select2.css')}}" />
@@ -105,45 +105,15 @@
         </div>
     </body>
     <script src="{{asset('assets/js/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/excanvas.min.js')}}"></script> 
+  
  <script src="{{asset('assets/js/main.js')}}"></script> 
-    <script src="{{asset('assets/js/jquery.ui.custom.js')}}"></script> 
+
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script> 
-    <script src="{{asset('assets/js/jquery.flot.min.js')}}"></script> 
-    <script src="{{asset('assets/js/jquery.flot.resize.min.js')}}"></script> 
-    <script src="{{asset('assets/js/jquery.peity.min.js')}}"></script> 
-    <script src="{{asset('assets/js/fullcalendar.min.js')}}"></script> 
-    <script src="{{asset('assets/js/maruti.js')}}"></script> 
-    <script src="{{asset('assets/js/maruti.dashboard.js')}}"></script> 
-    <script src="{{asset('assets/js/maruti.chat.js')}}"></script> 
+ 
     <script src="{{asset('assets/pagination.js')}}"></script>
     <script src="{{ asset('bundles/fosjsrouting/js/router.min.js') }}"></script>
 <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
-    <script type="text/javascript">
-        // This function is called from the pop-up menus to transfer to
-        // a different page. Ignore if the value returned is a null string:
-        function goPage(newURL) {
 
-            // if url is empty, skip the menu dividers and reset the menu selection to default
-            if (newURL != "") {
-
-                // if url is "-", it is this page -- reset the menu:
-                if (newURL == "-") {
-                    resetMenu();
-                }
-                // else, send page to designated URL            
-                else {
-                    document.location.href = newURL;
-                }
-            }
-        }
-
-        // resets the menu selection upon entry to this page:
-        function resetMenu() {
-            document.gomenu.selector.selectedIndex = 2;
-        }
-
-    </script>
 
 
 </html>

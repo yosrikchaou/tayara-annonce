@@ -39,16 +39,13 @@ class AdmineController extends Controller {
      * @Method({"GET", "POST"})
      */
     public function editAction(Annonce $annonce) {
-       
-            $annonce->setValide("2");
-         
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($annonce);
-            $em->flush();
+        $annonce->setValide("2");
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($annonce);
+        $em->flush();
 
-            return $this->redirectToRoute('admine_index');
-      
+        return $this->redirectToRoute('admine_index');
     }
 
 }

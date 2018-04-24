@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @Route("modelajx")
  */
-class ModelAjx extends Controller {
+class ModelAjxController extends Controller {
 
     /**
      * 

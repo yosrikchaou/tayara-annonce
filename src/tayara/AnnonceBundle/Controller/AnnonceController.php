@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\File;
+use tayara\AnnonceBundle\Form\AnnonceType;
 
 /**
  * Annonce controller.
@@ -29,13 +30,13 @@ class AnnonceController extends Controller {
         $annonces = $em->getRepository('tayaraAnnonceBundle:Annonce')->findBy(
                 array('user' => $this->getUser()));
 
-        //calculer nombre des anonces
+        //calculer nombre des annonces
         $nbAnnonce = $em->getRepository('tayaraAnnonceBundle:Annonce')->nbAnoonce();
 
-        //calculer nombre des annonces vehicule
+        //calculer nombre des annonces vehicules
         $nbV = $em->getRepository('tayaraAnnonceBundle:Annonce')->nbVehicule();
 
-        //calculer nombre des annonces immobilier
+        //calculer nombre des annonces immobiliers
         $nbIm = $em->getRepository('tayaraAnnonceBundle:Annonce')->nbImmobilier();
 
         return $this->render('annonce/index.html.twig', array(
@@ -54,9 +55,12 @@ class AnnonceController extends Controller {
         $annonce->setUser($this->getUser());
         $annonce->setDate(new \DateTime());
         $annonce->setValide("1");
-        $form = $this->createForm('tayara\AnnonceBundle\Form\AnnonceType', $annonce);
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->createForm(AnnonceType::class, $annonce, ['em' => $em]);
+
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
+
             $file = $annonce->getImage();
             $fileName = $this->generateUniqueFileName() . '.' . $file->guessExtension();
             $file->move(
@@ -64,6 +68,7 @@ class AnnonceController extends Controller {
             );
             $annonce->setImage($fileName);
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($annonce);
             $em->flush();
 

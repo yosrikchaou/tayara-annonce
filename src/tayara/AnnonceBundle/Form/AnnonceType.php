@@ -8,6 +8,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+
 
 class AnnonceType extends AbstractType {
 
@@ -15,7 +19,7 @@ class AnnonceType extends AbstractType {
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('categorie')->add('region')
+           $builder->add('categorie')->add('region')
                 ->add('ville')->add('titre')
                 ->add('description', TextareaType::class)
                 ->add('prix')
@@ -36,6 +40,29 @@ class AnnonceType extends AbstractType {
                         'A louer' => '1',
                         'A vendre' => '2'
                         )))->add('chambre')->add('superficie');
+        $modelV= function (FormInterface $form, $id,$em)
+        {
+
+        $model = $em->getRepository('tayaraAnnonceBundle:Model')->findBy(array('marque' => $id));
+     
+            if ($model) {
+                $model1 = array();
+                foreach ($model as $value) {
+                    $model1[(string)$value->getNom()] = $value->getNom();
+                }
+            } else {
+                $model1 = null;
+            }
+           
+           $form->add('model',ChoiceType::class, array(
+                    'choices' => $model1));
+
+        };
+         
+        $builder->get('marque')->addEventListener(FormEvents::POST_SUBMIT, function(FormEvent $event) use ($modelV) {
+            $modelV($event->getForm()->getParent(),$event->getForm()->getData(),$event->getForm()->getConfig()->getOptions()['em']);
+        });
+        
     }
 
     /**
@@ -43,7 +70,7 @@ class AnnonceType extends AbstractType {
      */
     public function configureOptions(OptionsResolver $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'tayara\AnnonceBundle\Entity\Annonce'
+            'em' => null
         ));
     }
 

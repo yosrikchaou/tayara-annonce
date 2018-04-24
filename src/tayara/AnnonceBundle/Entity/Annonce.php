@@ -93,7 +93,7 @@ class Annonce
      /**
      * @var string
      *
-     * @ORM\Column(name="Model", type="string", length=255)
+     * @ORM\Column(name="Model", type="string", length=255, nullable=true)
      */
     
     private $model;
@@ -536,14 +536,15 @@ class Annonce
         return $this->valide;
     }
 
+
     /**
      * Set model
      *
-     * @param \tayara\AnnonceBundle\Entity\Model $model
+     * @param string $model
      *
      * @return Annonce
      */
-    public function setModel(\tayara\AnnonceBundle\Entity\Model $model = null)
+    public function setModel($model)
     {
         $this->model = $model;
 
@@ -553,7 +554,7 @@ class Annonce
     /**
      * Get model
      *
-     * @return \tayara\AnnonceBundle\Entity\Model
+     * @return string
      */
     public function getModel()
     {
