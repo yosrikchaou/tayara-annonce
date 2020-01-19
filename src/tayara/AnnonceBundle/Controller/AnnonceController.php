@@ -23,6 +23,7 @@ class AnnonceController extends Controller {
      * @Route("/", name="annonce_index")
      * @Method("GET")
      */
+	 // test
     public function indexAction() {
 
         $em = $this->getDoctrine()->getManager();
